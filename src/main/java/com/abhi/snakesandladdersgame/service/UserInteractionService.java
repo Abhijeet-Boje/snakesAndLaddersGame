@@ -1,14 +1,13 @@
 package com.abhi.snakesandladdersgame.service;
 
 import com.abhi.snakesandladdersgame.entity.Player;
+import com.abhi.snakesandladdersgame.enums.Message;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Collections;
 import java.util.Scanner;
-
-import javax.annotation.PostConstruct;
 
 /**
  * This User interaction service is just temporary mechanism to interact with user.
@@ -26,10 +25,8 @@ public class UserInteractionService {
         this.playService = playService;
     }
 
-    @PostConstruct
     public void startGame() {
-        System.out.flush();
-        displayService.displayMessage("Starting game");
+        displayService.displayMessage(Message.LETS_START_THE_GAME.getMassage());
         Scanner scanner = new Scanner(System.in);
 
         Player player = new Player(getPlayerName(scanner));
@@ -44,26 +41,26 @@ public class UserInteractionService {
 
 
     private int getDiceNumber(Scanner scanner) {
-        displayService.displayMessage("Enter new dice number: ");
+        displayService.displayMessage(Message.DICE_NUMBER_INPUT.getMassage());
         String diceNumber = scanner.nextLine();
         try {
             int dNumber = Integer.valueOf(diceNumber);
             if (dNumber < 1 || dNumber > 6) {
-                displayService.displayMessage("Please enter number b/w  1 to 6.");
+                displayService.displayMessage(Message.REQUEST_USER_FOR_CORRECT_DICE_INPUT.getMassage());
                 return getDiceNumber(scanner);
             } else {
                 return dNumber;
             }
         }
         catch (NumberFormatException ex) {
-            displayService.displayMessage("Please enter number b/w  1 to 6.");
+            displayService.displayMessage(Message.REQUEST_USER_FOR_CORRECT_DICE_INPUT.getMassage());
             return getDiceNumber(scanner);
         }
     }
 
 
     private String getPlayerName(Scanner scanner) {
-        displayService.displayMessage("Enter player name: ");
+        displayService.displayMessage(Message.PLAYER_NAME_INPUT.getMassage());
         return scanner.nextLine();
     }
 }

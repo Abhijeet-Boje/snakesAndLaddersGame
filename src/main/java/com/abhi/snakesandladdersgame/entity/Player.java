@@ -9,22 +9,17 @@ public class Player {
     private String name;
     @Setter
     private int position;
-    private boolean isActive;
-    private boolean wonTheGame;
 
     public Player(String name) {
         this.name = name;
         position = 0;
-        isActive = false;
-        wonTheGame = false;
     }
 
-    public void markActive() {
-        this.isActive = true;
+    public boolean isActive() {
+        return position != 0;
     }
 
-    public void markWon() {
-        this.position = 100;
-        this.wonTheGame = true;
+    public boolean isWonTheGame() {
+        return position == 100;
     }
 }

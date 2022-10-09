@@ -27,13 +27,18 @@ public class PlayService implements IPlayService {
     @Override
     public void play(Player player, int diceNumber) {
         NextPositionVisitor.visit(player, diceNumber);
-        int currentPosition = player.getPosition();
         try {
-            if(snakeService.hasSnakeAtPosition(currentPosition)) {
+            if(!player.isActive()) {
+                displayService.displayPlayerNotActive(player);
+                return;
+            }
+            if(snakeService.hasSnakeAtPosition(player.getPosition())) {
+                int currentPosition = player.getPosition();
                 snakeService.eat(player);
                 displayService.displaySnakeAte(player, currentPosition);
             }
-            if(ladderService.hasLadderAtPosition(currentPosition)) {
+            if(ladderService.hasLadderAtPosition(player.getPosition())) {
+                int currentPosition = player.getPosition();
                 ladderService.climb(player);
                 displayService.displayLadderClimbed(player, currentPosition);
             }

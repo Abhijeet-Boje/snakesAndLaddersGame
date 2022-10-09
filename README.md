@@ -4,7 +4,8 @@
 
 * Just follow the commands shown in console.
   a. Add player name
-  b. Keep on adding dice values [1 to 6]  
+  b. Keep on adding dice values [1 to 6]
+  c. Player can only start after getting 6 for the first time 
 
 ### Current Scope:
 

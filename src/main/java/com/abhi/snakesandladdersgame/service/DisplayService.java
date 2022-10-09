@@ -1,6 +1,7 @@
 package com.abhi.snakesandladdersgame.service;
 
 import com.abhi.snakesandladdersgame.entity.Player;
+import com.abhi.snakesandladdersgame.enums.Message;
 
 import org.springframework.stereotype.Service;
 
@@ -11,41 +12,45 @@ public class DisplayService implements IDisplayService {
 
     @Override
     public void displayMessage(String message) {
-        System.out.println(message);
+        display(message);
     }
 
     @Override
     public void displayGameStart(List<Player> players) {
-        System.out.println("###### Game started #######");
-        System.out.println();
+        display(Message.GAME_STARTED.getMassage());
         for (Player player: players) {
-            System.out.println("Player name: " + player.getName());
+            display(Message.SHOW_PLAYER_NAME.getMassage(player.getName()));
         }
     }
 
     @Override
     public void displayWinner(Player player) {
-        System.out.println("Yay!!" + player.getName() + " you won!!");
+        display(Message.PLAYER_WON_MESSAGE.getMassage(player.getName()));
     }
 
     @Override
     public void displayLadderClimbed(Player player, int oldPosition) {
-        System.out.println("Awesome!! " + player.getName() + " you climbed from " + oldPosition + " to " + player.getPosition());
+        display(Message.LADDER_CLIMBED_MESSAGE.getMassage(player.getName(), String.valueOf(oldPosition), String.valueOf(player.getPosition())));
     }
 
     @Override
     public void displaySnakeAte(Player player, int oldPosition) {
-        System.out.println("Ohhh! " + player.getName() + " snake ate you and you fall from " + oldPosition + " to " + player.getPosition());
+        display(Message.SNAKE_ATE_MESSAGE.getMassage(player.getName(), String.valueOf(oldPosition), String.valueOf(player.getPosition())));
 
     }
 
     @Override
     public void displayCurrentBoardPosition(Player player) {
-        System.out.println(player.getName() + " your new position is: " + player.getPosition());
-        displayLineBreak();
+        display(Message.PLAYER_NEW_POSITION.getMassage(player.getName(), String.valueOf(player.getPosition())));
+        display(Message.LINE_BREAK.getMassage());
     }
 
-    private void displayLineBreak() {
-        System.out.println("=====================================================================");
+    @Override
+    public void displayPlayerNotActive(Player player) {
+        display(Message.PLAYER_NOT_ACTIVATED_MESSAGE.getMassage(player.getName()));
+    }
+
+    private void display(String message) {
+        System.out.println(message);
     }
 }

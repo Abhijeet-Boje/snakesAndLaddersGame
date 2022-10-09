@@ -33,7 +33,6 @@ class PlayServiceTest {
         //34 + 3 -> 37 -> 85
         Player player = new Player(P1);
         int existingPosition = 34;
-        player.markActive();
         player.setPosition(existingPosition);
 
         playService.play(player, 3);
@@ -50,7 +49,6 @@ class PlayServiceTest {
         //43 + 5 => 48
         Player player = new Player(P1);
         int existingPosition = 43;
-        player.markActive();
         player.setPosition(43);
 
         playService.play(player, 5);
@@ -67,7 +65,6 @@ class PlayServiceTest {
         //93 + 4 -> 97 => 21
         Player player = new Player(P1);
         int existingPosition = 93;
-        player.markActive();
         player.setPosition(existingPosition);
 
         playService.play(player, 4);
@@ -85,7 +82,6 @@ class PlayServiceTest {
 
         Player player = new Player(P1);
         int existingPosition = 96;
-        player.markActive();
         player.setPosition(existingPosition);
 
         playService.play(player, 4);
@@ -100,7 +96,6 @@ class PlayServiceTest {
         //98 + 4 -> (101 > 100) => 98
         Player player = new Player(P1);
         int existingPosition = 98;
-        player.markActive();
         player.setPosition(existingPosition);
 
         playService.play(player, 4);

@@ -31,7 +31,6 @@ class NextPositionVisitorTest {
     @Test
     public void testPositionWithNewDiceNumberMovingAheadOf_100() {
         Player player = new Player("Abhijeet");
-        player.markActive();
         player.setPosition(97);
         NextPositionVisitor.visit(player, 5);
         //verify player not won
@@ -43,7 +42,6 @@ class NextPositionVisitorTest {
     @Test
     public void testNewPositionWithExistingAt_50_AndDiceNumber_3() {
         Player player = new Player("Abhijeet");
-        player.markActive();
         player.setPosition(50);
         NextPositionVisitor.visit(player, 3);
         //verify player not won
@@ -55,7 +53,6 @@ class NextPositionVisitorTest {
     @Test
     public void testPositionWithNewDiceNumberMovingAt_100() {
         Player player = new Player("Abhijeet");
-        player.markActive();
         player.setPosition(97);
         NextPositionVisitor.visit(player, 3);
         //verify player won

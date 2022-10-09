@@ -29,7 +29,6 @@ class LadderServiceTest {
     @Test
     public void testClimbLadderAfterWin() {
         Player player = new Player("Abhijeet");
-        player.markWon();
         player.setPosition(100);
 
         assertThrows(LadderNotFoundException.class, () -> ladderService.climb(player));
@@ -42,7 +41,6 @@ class LadderServiceTest {
     @SneakyThrows
     public void testClimbLadder_L2() {
         Player player = new Player("Abhijeet");
-        player.markActive();
         player.setPosition(37);
 
         ladderService.climb(player);
@@ -54,7 +52,6 @@ class LadderServiceTest {
     @SneakyThrows
     public void testClimbLadder_L4() {
         Player player = new Player("Abhijeet");
-        player.markActive();
         player.setPosition(65);
 
         ladderService.climb(player);
@@ -65,7 +62,6 @@ class LadderServiceTest {
     @Test
     public void testClimbLadder_PlayerNotAtLadderPosition() {
         Player player = new Player("Abhijeet");
-        player.markActive();
         player.setPosition(50);
         assertThrows(LadderNotFoundException.class, () -> ladderService.climb(player)) ;
     }

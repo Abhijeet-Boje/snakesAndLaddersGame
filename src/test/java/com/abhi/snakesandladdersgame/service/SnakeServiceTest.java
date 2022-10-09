@@ -30,7 +30,6 @@ class SnakeServiceTest {
     @Test
     public void testEatActionAfterWinning() {
         Player player = new Player("Abhijeet");
-        player.markWon();
         //verify no snake at start
         assertThrows(SnakeNotFoundException.class, ()-> snakeService.eat(player));
         //verify position not changed
@@ -41,7 +40,6 @@ class SnakeServiceTest {
     @SneakyThrows
     public void testEatActionBySnakeS2() {
         Player player = new Player("Abhijeet");
-        player.markActive();
         player.setPosition(65);
 
         snakeService.eat(player);
@@ -54,7 +52,6 @@ class SnakeServiceTest {
     @SneakyThrows
     public void testEatActionBySnakeS4() {
         Player player = new Player("Abhijeet");
-        player.markActive();
         player.setPosition(97);
 
         snakeService.eat(player);
@@ -66,7 +63,6 @@ class SnakeServiceTest {
     @Test
     public void testEatActionFromPositionWithoutSnake() {
         Player player = new Player("Abhijeet");
-        player.markActive();
         player.setPosition(50);
         //verify no snake at start
         assertThrows(SnakeNotFoundException.class, ()-> snakeService.eat(player));
